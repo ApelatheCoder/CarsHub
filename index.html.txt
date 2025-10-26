@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cars Hub - Your Ultimate Car Video Destination</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Roboto:wght@400;500;700&family=Pacifico&family=Oswald:wght@600;700&family=Lato:wght@300;700&display=swap" rel="stylesheet" />
+  <style>
+    /* General Styles */
+    body {
+      font-family: 'Roboto', sans-serif;
+      font-weight: bold;
+      margin: 0;
+      padding: 0;
+      background: #B0C4DE; /* Updated background color */
+      color: #222;
+      line-height: 1.6;
+      animation: fadeIn 1s ease-in-out;
+      perspective: 1000px;
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    /* 3D Animated Cars in Background */
+    .car {
+      position: absolute;
+      width: 100px;
+      height: 50px;
+      background: url('https://cdn-icons-png.flaticon.com/512/744/744465.png') no-repeat center center;
+      background-size: contain;
+      animation: drive 10s linear infinite;
+      transform-style: preserve-3d;
+      opacity: 0.9;
+    }
+
+    .car:nth-child(1) { top: 20%; left: -120px; animation-delay: 0s; }
+    .car:nth-child(2) { top: 40%; left: -120px; animation-delay: 2s; transform: scale(0.8); }
+    .car:nth-child(3) { top: 60%; left: -120px; animation-delay: 4s; transform: scale(1.2); }
+    .car:nth-child(4) { top: 80%; left: -120px; animation-delay: 6s; transform: scale(0.9); }
+
+    @keyframes drive {
+      0% { left: -150px; transform: translateZ(0) rotateY(0deg); }
+      50% { transform: translateZ(50px) rotateY(10deg); }
+      100% { left: calc(100vw + 150px); transform: translateZ(0) rotateY(0deg); }
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+      background: transparent;
+      border-radius: 10px;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Animations */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px) rotateX(10deg); }
+      to { opacity: 1; transform: translateY(0) rotateX(0deg); }
+    }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes slideInLeft {
+      from { opacity: 0; transform: translateX(-50px); }
+      to { opacity: 1; transform: translateX(0); }
+    }
+
+    @keyframes slideInRight {
+      from { opacity: 0; transform: translateX(50px); }
+      to { opacity: 1; transform: translateX(0); }
+    }
+
+    @keyframes tilt3D {
+      0% { transform: rotateX(0deg); }
+      50% { transform: rotateX(5deg); }
+      100% { transform: rotateX(0deg); }
+    }
+
+    @keyframes bounce {
+      0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+      40% { transform: translateY(-10px); }
+      60% { transform: translateY(-5px); }
+    }
+
+    @keyframes zoomIn {
+      from { transform: scale(0.8); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+
+    /* Instagram Button */
+    .instagram-button {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background-color: #e4405f;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      font-size: 16px;
+      border-radius: 5px;
+      cursor: pointer;
+      z-index: 1000;
+      font-family: 'Roboto', sans-serif;
+      font-weight: bold;
+      transition: all 0.3s ease;
+      box-shadow: 0 0 10px rgba(228, 64, 95, 0.5);
+      animation: pulse 2s infinite, bounce 3s infinite 1s;
+    }
+
+    @keyframes pulse {
+      0% { box-shadow: 0 0 10px rgba(228, 64, 95, 0.5); }
+      50% { box-shadow: 0 0 20px rgba(228, 64, 95, 0.8); }
+      100% { box-shadow: 0 0 10px rgba(228, 64, 95, 0.5); }
+    }
+
+    .instagram-button:hover {
+      background-color: #d6336c;
+      box-shadow: 0 0 20px rgba(228, 64, 95, 0.8);
+      transform: scale(1.05) rotateY(5deg);
+    }
+
+    /* Hero Section */
+    .hero {
+      text-align: center;
+      background: rgba(0, 0, 0, 0.3);
+      color: white;
+      padding: 100px 20px;
+      border-radius: 10px;
+      margin-bottom: 40px;
+      animation: fadeIn 1s ease-in-out 0.2s both, tilt3D 3s ease-in-out 0.5s infinite;
+    }
+
+    .hero h1 {
+      font-family: 'Oswald', sans-serif;
+      font-weight: 700;
+      font-size: 2.5em;
+      margin: 0;
+      animation: slideInLeft 1.5s ease-in-out 0.5s both;
+    }
+
+    .hero .hub {
+      font-family: 'Lato', sans-serif;
+      font-weight: 700;
+      color: black;
+      background-color: yellow;
+      padding: 2px 4px;
+      border-radius: 0;
+      animation: tilt3D 4s ease-in-out infinite;
+    }
+
+    .hero p {
+      font-size: 1.2em;
+      margin: 20px 0;
+      font-family: 'Lato', sans-serif;
+      font-weight: 700;
+      animation: fadeInUp 1.5s ease-in-out 0.8s both;
+    }
+
+    .cta-button {
+      background-color: #ff7e5f;
+      color: white;
+      border: none;
+      padding: 15px 30px;
+      font-size: 1.1em;
+      border-radius: 5px;
+      cursor: pointer;
+      font-family: 'Oswald', sans-serif;
+      font-weight: 700;
+      transition: all 0.3s ease;
+      animation: zoomIn 1s ease-in-out 0.7s both;
+    }
+
+    .cta-button:hover {
+      background-color: #ff5e3a;
+      transform: scale(1.1) rotateX(10deg);
+    }
+
+    /* About Section */
+    .about-section {
+      margin-bottom: 40px;
+      text-align: center;
+      animation: fadeIn 1s ease-in-out 0.4s both, tilt3D 3s ease-in-out 0.8s infinite;
+    }
+
+    .about-section h2 {
+      font-family: 'Oswald', sans-serif;
+      font-weight: 700;
+      font-size: 2.5em;
+      margin-bottom: 20px;
+      color: #ff7e5f;
+      animation: slideInRight 1.5s ease-in-out 0.6s both;
+    }
+
+    .about-section p {
+      font-size: 1.1em;
+      max-width: 800px;
+      margin: 0 auto;
+      font-family: 'Lato', sans-serif;
+      font-weight: 700;
+      animation: fadeInUp 1.5s ease-in-out 0.9s both;
+    }
+
+    /* Videos Section */
+    .videos-section {
+      margin-bottom: 40px;
+      animation: fadeIn 1s ease-in-out 0.6s both, tilt3D 3s ease-in-out 1s infinite;
+    }
+
+    .videos-section h2 {
+      font-family: 'Oswald', sans-serif;
+      font-weight: 700;
+      font-size: 2.5em;
+      text-align: center;
+      margin-bottom: 30px;
+      color: #333;
+      animation: slideInLeft 1.5s ease-in-out 0.8s both;
+    }
+
+    .highlight-videos {
+      background-color: #800080;
+      color: white;
+      padding: 2px 4px;
+    }
+
+    .video-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
+    }
+
+    .video-card {
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+      transition: all 0.3s ease;
+      cursor: pointer;
+      animation: fadeIn 1s ease-in-out 0.8s both, zoomIn 1s ease-in-out 1s both;
+      transform-style: preserve-3d;
+    }
+
+    .video-card:hover {
+      transform: translateY(-5px) rotateY(10deg) scale(1.05);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    .video-thumbnail {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      transition: transform 0.3s ease;
+    }
+
+    .video-thumbnail:hover {
+      transform: scale(1.1) rotateX(5deg);
+    }
+
+    .video-title {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      font-size: 1.5em;
+      padding: 15px;
+      margin: 0;
+      color: #333;
+      animation: fadeInUp 1.2s ease-in-out 1.2s both;
+    }
+
+    .video-description {
+      font-family: 'Lato', sans-serif;
+      font-weight: 700;
+      padding: 0 15px 15px;
+      margin: 0;
+      color: #555;
+      animation: fadeInUp 1.2s ease-in-out 1.4s both;
+    }
+
+    /* Newsletter Section */
+    .newsletter {
+      text-align: center;
+      background: rgba(0, 0, 0, 0.4);
+      color: white;
+      padding: 40px 20px;
+      border-radius: 10px;
+      animation: fadeIn 1s ease-in-out 1s both, tilt3D 3s ease-in-out 1.2s infinite;
+    }
+
+    .newsletter h3 {
+      font-family: 'Oswald', sans-serif;
+      font-weight: 700;
+      font-size: 2em;
+      margin-bottom: 10px;
+      animation: slideInRight 1.5s ease-in-out 1.1s both;
+    }
+
+    .newsletter p {
+      font-family: 'Lato', sans-serif;
+      font-weight: 700;
+      margin-bottom: 20px;
+      animation: fadeInUp 1.5s ease-in-out 1.3s both;
+    }
+
+    .newsletter a {
+      background-color: gray;
+      color: white;
+      text-decoration: none;
+      display: inline-block;
+      padding: 10px 20px;
+      font-size: 1em;
+      border-radius: 5px;
+      font-family: 'Roboto', sans-serif;
+      font-weight: bold;
+      transition: all 0.3s ease;
+      animation: zoomIn 1s ease-in-out 1.5s both;
+    }
+
+    .newsletter a:hover {
+      background-color: darkgray;
+      transform: scale(1.1) rotateX(10deg);
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 20px;
+      background: transparent;
+      color: white;
+      font-family: 'Lato', sans-serif;
+      font-weight: 700;
+      animation: fadeIn 1s ease-in-out 1.2s both, tilt3D 3s ease-in-out 1.4s infinite;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .hero h1 { font-size: 1.8em; }
+      .hero p { font-size: 1em; }
+      .about-section h2, .videos-section h2 { font-size: 2em; }
+      .video-grid { grid-template-columns: 1fr; }
+      .instagram-button { position: static; margin: 20px auto; display: block; }
+    }
+
+    @media (max-width: 480px) {
+      .hero { padding: 70px 10px; }
+      .car { width: 70px; height: 35px; }
+    }
+  </style>
+</head>
+<body>
+  <!-- 3D Animated Cars -->
+  <div class="car"></div>
+  <div class="car"></div>
+  <div class="car"></div>
+  <div class="car"></div>
+
+  <button class="instagram-button" onclick="window.open('https://www.instagram.com/apela.ff.69', '_blank')">Instagram</button>
+
+  <div class="container">
+    <section class="hero">
+      <h1>Cars <span class="hub">Hub</span></h1>
+      <p>Discover the hottest car videos and reviews. Rev up your passion for automobiles!</p>
+      <button class="cta-button" onclick="document.querySelector('.videos-section').scrollIntoView({behavior: 'smooth'})">
+        Explore Videos
+      </button>
+    </section>
+
+    <section class="about-section">
+      <h2>Why Only Cars Hub? 🤔</h2>
+      <p>At Cars Hub, we're all about the thrill of the ride! From sizzling BMWs to roaring Lamborghinis, our curated videos bring you non-stop action, expert reviews, and the latest in automotive excitement. Whether you're a gearhead or just love the speed, we've got the content to fuel your adrenaline. Join thousands of fans and dive into the world of high-performance cars today!</p>
+    </section>
+
+    <section class="videos-section">
+      <h2><span style="color: blue;">Featured</span> <span class="highlight-videos">Videos</span></h2>
+      <div class="video-grid">
+        <div class="video-card">
+          <img src="https://img.youtube.com/vi/YFNSDdrElfc/maxresdefault.jpg" alt="Hot BMW Video Thumbnail" class="video-thumbnail" onclick="window.open('https://youtu.be/YFNSDdrElfc', '_blank')" />
+          <div class="video-title" onclick="window.open('https://youtu.be/YFNSDdrElfc', '_blank')">
+            <span style="color: #ff7e5f;">BMW</span> 🥵
+          </div>
+          <p class="video-description">Check out this sizzling BMW showcase with stunning visuals and roaring engines!</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="newsletter">
+      <h3>Subscribe to Our Newsletter</h3>
+      <p>Get the latest car news and exclusive content delivered to your inbox!</p>
+      <a href="https://youtube.com/@apelathecoder">Subscribe Now</a>
+    </section>
+  </div>
+
+  <footer>
+    <p>&copy; 2025 Cars Hub</p>
+  </footer>
+</body>
+</html>
